@@ -1,0 +1,156 @@
+-optimizationpasses 3
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-repackageclasses ''
+-verbose
+-dump class_files.txt
+-printseeds seeds.txt
+-printusage unused.txt
+-printmapping mapping.txt
+
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*,!code/allocation/variable
+
+-keepparameternames
+-keepattributes Signature,Exceptions,InnerClasses,Deprecated,SourceFile,LineNumberTable,EnclosingMethod, *Annotation*
+
+-dontwarn javax.xml.stream.events.**
+-dontwarn org.codehaus.jackson.**
+-dontwarn org.apache.commons.logging.impl.**
+-dontwarn org.apache.http.conn.scheme.**
+-dontwarn org.apache.**
+-dontwarn okio.**
+-dontnote android.support.v4.**
+-dontwarn android.support.v4.**
+-dontnote org.apache.**
+-dontwarn print.io.**
+-dontnote print.io.**
+-dontwarn com.amazonaws.**
+-dontnote com.amazonaws.**
+-dontnote com.braintreegateway.**
+-dontnote cz.msebera.android.**
+-dontnote com.slidingmenu.**
+-dontwarn com.slidingmenu.**
+-dontnote rx.subjects.**
+-dontnote io.card.**
+-dontnote com.paypal.**
+-dontwarn com.paypal.**
+-dontnote io.fabric.**
+-dontwarn io.fabric.**
+-dontnote okhttp3.internal.**
+-dontnote it.sephiroth.**
+-dontnote sun.misc.**
+
+-dontnote com.google.gson.internal.**
+-dontwarn com.google.gson.internal.**
+
+-keep class * extends android.app.Activity
+-keep class * extends android.app.Application
+-keep class * extends android.app.Service
+-keep class * extends android.content.BroadcastReceiver
+-keep class * extends android.content.ContentProvider
+-keep class * extends android.appwidget.AppWidgetProvider
+-keep,includedescriptorclasses class android.support.v4.** { *; }
+-keep,includedescriptorclasses class android.support.v7.** { *; }
+-keep interface android.support.v7.** { *; }
+-keep,includedescriptorclasses class android.support.v13.** { *; }
+-keep interface android.support.v13.** { *; }
+
+-keep class sun.misc.Unsafe { *; }
+-keep class com.google.gson.internal.UnsafeAllocator
+-keep class com.google.gson.internal.UnsafeAllocator { java.lang.Object theUnsafe; }
+-keep class com.google.gson.stream.** { *; }
+-keep class com.google.gson.internal.**
+-keep class com.googlecode.concurrentlinkedhashmap.** { *; }
+-keepclassmembers public class com.googlecode.concurrentlinkedhashmap.** { *; }
+
+-keep public class * extends android.view.View {
+    public <init>(android.content.Context);
+    public <init>(android.content.Context, android.util.AttributeSet);
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+    public void set*(...);
+}
+
+-keep public class * {
+    public protected *;
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet);
+}
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context, android.util.AttributeSet, int);
+}
+
+-keepclassmembers class * implements android.os.Parcelable {
+    static android.os.Parcelable$Creator CREATOR;
+}
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+    private static <fields>;
+}
+
+# remove verbose and debug log output
+#  public static *** v(...);
+-assumenosideeffects class android.util.Log {
+  public static *** v(...);
+  public static *** d(...);
+}
+
+
+-keepclassmembers class * {
+    public void *(android.view.View);
+    public <init>(android.content.Context);
+}
+
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+-keep,includedescriptorclasses class * extends java.util.ListResourceBundle {
+    protected java.lang.Object[][] getContents();
+}
+
+-keep,includedescriptorclasses public class com.google.android.gms.common.internal.safeparcel.SafeParcelable {
+    public static final *** NULL;
+}
+
+-keepnames class * implements android.os.Parcelable {
+    public static final ** CREATOR;
+}
+
+-keep class org.apache.commons.logging.**               { *; }
+-keep class com.amazonaws.services.sqs.QueueUrlHandler  { *; }
+-keep class com.amazonaws.javax.xml.transform.sax.*     { public *; }
+-keep class com.amazonaws.javax.xml.stream.**           { *; }
+-keep class com.amazonaws.services.**.model.*Exception* { *; }
+
+-keep,includedescriptorclasses class org.codehaus.** { *; }
+-keep,includedescriptorclasses class print.io.** { *; }
+-keep,includedescriptorclasses class com.braintreegateway.** { *; }
+-keep,includedescriptorclasses class cz.msebera.android.** { *; }
+-keep,includedescriptorclasses class com.slidingmenu.** { *; }
+-keep,includedescriptorclasses class io.card.payment.** { *; }
+-keep,includedescriptorclasses class com.paypal.** { *; }
+-keep,includedescriptorclasses class io.fabric.** { *; }
+-keep,includedescriptorclasses class it.sephiroth.** { *; }
+
+-keep,includedescriptorclasses class com.amazonaws.** { *; }
+-keep,includedescriptorclasses class rx.subjects.** { *; }
+-keep,includedescriptorclasses class com.bugsense.** { *; }
+-keep,includedescriptorclasses class com.android.org.conscrypt.** { *; }
+-keep,includedescriptorclasses class sun.security.ssl.** { *; }
+-keep,includedescriptorclasses class com.fasterxml.jackson.** { *; }
+-keep,includedescriptorclasses class cz.msebera.android.httpclient.extras.PRNGFixes { *; }
+
+-keep,includedescriptorclasses   interface it.sephiroth.** { *; }
+-keep,includedescriptorclasses   interface io.fabric.** { *; }
+-keep,includedescriptorclasses   interface com.paypal.** { *; }
+-keep,includedescriptorclasses   interface com.braintreegateway.** { *; }
+-keep,includedescriptorclasses   interface com.paypal.** { *; }
+-keep,includedescriptorclasses   interface print.io.** { *; }
+-keep,includedescriptorclasses   interface org.codehaus.** { *; }
+-keep,includedescriptorclasses   interface com.amazonaws.** { *; }
+
+-keep,includedescriptorclasses class org.apache.harmony.xnet.provider.jsse.** { *; }
+
